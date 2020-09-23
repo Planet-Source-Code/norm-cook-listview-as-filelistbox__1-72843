@@ -1,0 +1,266 @@
+VERSION 5.00
+Begin VB.PropertyPage FileListPage 
+   Caption         =   "FileListPage"
+   ClientHeight    =   4770
+   ClientLeft      =   0
+   ClientTop       =   0
+   ClientWidth     =   5760
+   PaletteMode     =   0  'Halftone
+   ScaleHeight     =   4770
+   ScaleWidth      =   5760
+   Begin VB.CheckBox chkHideColHdrs 
+      Caption         =   "HideColumnHeaders"
+      Height          =   285
+      Left            =   3000
+      TabIndex        =   17
+      Top             =   2640
+      Width           =   2700
+   End
+   Begin VB.Frame fraView 
+      Caption         =   "View"
+      Height          =   1455
+      Left            =   120
+      TabIndex        =   12
+      Top             =   2040
+      Width           =   1815
+      Begin VB.OptionButton optView 
+         Caption         =   "Icon"
+         Height          =   255
+         Index           =   0
+         Left            =   120
+         TabIndex        =   16
+         Tag             =   "3"
+         Top             =   240
+         Width           =   975
+      End
+      Begin VB.OptionButton optView 
+         Caption         =   "SmallIcon"
+         Height          =   255
+         Index           =   1
+         Left            =   120
+         TabIndex        =   15
+         Top             =   480
+         Width           =   1215
+      End
+      Begin VB.OptionButton optView 
+         Caption         =   "List"
+         Height          =   255
+         Index           =   2
+         Left            =   120
+         TabIndex        =   14
+         Top             =   720
+         Width           =   975
+      End
+      Begin VB.OptionButton optView 
+         Caption         =   "Report"
+         Height          =   255
+         Index           =   3
+         Left            =   120
+         TabIndex        =   13
+         Top             =   960
+         Value           =   -1  'True
+         Width           =   975
+      End
+   End
+   Begin VB.CheckBox chkHoverSelection 
+      Caption         =   "HoverSelection"
+      Height          =   285
+      Left            =   3000
+      TabIndex        =   11
+      Top             =   2280
+      Width           =   2700
+   End
+   Begin VB.CheckBox chkHotTracking 
+      Caption         =   "HotTracking"
+      Height          =   285
+      Left            =   3000
+      TabIndex        =   10
+      Top             =   1560
+      Width           =   2700
+   End
+   Begin VB.CheckBox chkCheckboxes 
+      Caption         =   "Checkboxes"
+      Height          =   285
+      Left            =   3000
+      TabIndex        =   9
+      Top             =   1200
+      Width           =   2700
+   End
+   Begin VB.CheckBox chkGridLines 
+      Caption         =   "GridLines"
+      Height          =   285
+      Left            =   3000
+      TabIndex        =   8
+      Top             =   840
+      Width           =   2700
+   End
+   Begin VB.CheckBox chkHideSelection 
+      Caption         =   "HideSelection"
+      Height          =   285
+      Left            =   3000
+      TabIndex        =   7
+      Top             =   480
+      Width           =   2700
+   End
+   Begin VB.CheckBox chkMultiSelect 
+      Caption         =   "MultiSelect"
+      Height          =   285
+      Left            =   3000
+      TabIndex        =   6
+      Top             =   120
+      Width           =   2700
+   End
+   Begin VB.CheckBox chkFullRowSelect 
+      Caption         =   "FullRowSelect"
+      Height          =   285
+      Left            =   3000
+      TabIndex        =   5
+      Top             =   1920
+      Width           =   2700
+   End
+   Begin VB.TextBox txtPattern 
+      Height          =   330
+      Left            =   90
+      TabIndex        =   4
+      Top             =   1485
+      Width           =   2700
+   End
+   Begin VB.CheckBox chkShowDate 
+      Caption         =   "ShowDate"
+      Height          =   285
+      Left            =   90
+      TabIndex        =   2
+      Top             =   840
+      Width           =   2700
+   End
+   Begin VB.CheckBox chkShowType 
+      Caption         =   "ShowType"
+      Height          =   285
+      Left            =   90
+      TabIndex        =   1
+      Top             =   480
+      Width           =   2700
+   End
+   Begin VB.CheckBox chkShowSize 
+      Caption         =   "ShowSize"
+      Height          =   285
+      Left            =   90
+      TabIndex        =   0
+      Top             =   120
+      Width           =   2700
+   End
+   Begin VB.Label lblPattern 
+      Caption         =   "Pattern:"
+      Height          =   240
+      Left            =   90
+      TabIndex        =   3
+      Top             =   1230
+      Width           =   2700
+   End
+End
+Attribute VB_Name = "FileListPage"
+Attribute VB_GlobalNameSpace = False
+Attribute VB_Creatable = False
+Attribute VB_PredeclaredId = False
+Attribute VB_Exposed = False
+Option Explicit
+
+Private Sub chkHideColHdrs_Click()
+ Changed = True
+End Sub
+
+Private Sub chkHoverSelection_Click()
+ Changed = True
+End Sub
+
+
+Private Sub chkHotTracking_Click()
+ Changed = True
+End Sub
+
+
+Private Sub chkCheckboxes_Click()
+ Changed = True
+End Sub
+
+
+Private Sub chkGridLines_Click()
+ Changed = True
+End Sub
+
+
+Private Sub chkHideSelection_Click()
+ Changed = True
+End Sub
+
+
+Private Sub chkMultiSelect_Click()
+ Changed = True
+End Sub
+
+
+Private Sub chkFullRowSelect_Click()
+ Changed = True
+End Sub
+
+
+Private Sub optView_Click(Index As Integer)
+ optView(0).Tag = Index
+ Changed = True
+End Sub
+
+Private Sub txtPattern_Change()
+ Changed = True
+End Sub
+
+
+Private Sub chkShowDate_Click()
+ Changed = True
+End Sub
+
+
+Private Sub chkShowType_Click()
+ Changed = True
+End Sub
+
+
+Private Sub chkShowSize_Click()
+ Changed = True
+End Sub
+
+
+Private Sub PropertyPage_ApplyChanges()
+ SelectedControls(0).HideColumnHeaders = (chkHideColHdrs.Value = vbChecked)
+ SelectedControls(0).HoverSelection = (chkHoverSelection.Value = vbChecked)
+ SelectedControls(0).HotTracking = (chkHotTracking.Value = vbChecked)
+ SelectedControls(0).Checkboxes = (chkCheckboxes.Value = vbChecked)
+ SelectedControls(0).GridLines = (chkGridLines.Value = vbChecked)
+ SelectedControls(0).HideSelection = (chkHideSelection.Value = vbChecked)
+ SelectedControls(0).MultiSelect = (chkMultiSelect.Value = vbChecked)
+ SelectedControls(0).FullRowSelect = (chkFullRowSelect.Value = vbChecked)
+ SelectedControls(0).Pattern = txtPattern.Text
+ SelectedControls(0).ShowDate = (chkShowDate.Value = vbChecked)
+ SelectedControls(0).ShowType = (chkShowType.Value = vbChecked)
+ SelectedControls(0).ShowSize = (chkShowSize.Value = vbChecked)
+ SelectedControls(0).View = optView(0).Tag
+End Sub
+
+
+
+Private Sub PropertyPage_SelectionChanged()
+ chkHideColHdrs.Value = (SelectedControls(0).HideColumnHeaders And vbChecked)
+ chkHoverSelection.Value = (SelectedControls(0).HoverSelection And vbChecked)
+ chkHotTracking.Value = (SelectedControls(0).HotTracking And vbChecked)
+ chkCheckboxes.Value = (SelectedControls(0).Checkboxes And vbChecked)
+ chkGridLines.Value = (SelectedControls(0).GridLines And vbChecked)
+ chkHideSelection.Value = (SelectedControls(0).HideSelection And vbChecked)
+ chkMultiSelect.Value = (SelectedControls(0).MultiSelect And vbChecked)
+ chkFullRowSelect.Value = (SelectedControls(0).FullRowSelect And vbChecked)
+ txtPattern.Text = SelectedControls(0).Pattern
+ chkShowDate.Value = (SelectedControls(0).ShowDate And vbChecked)
+ chkShowType.Value = (SelectedControls(0).ShowType And vbChecked)
+ chkShowSize.Value = (SelectedControls(0).ShowSize And vbChecked)
+ optView(SelectedControls(0).View).Value = True
+End Sub
+
+
